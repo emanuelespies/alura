@@ -37,6 +37,13 @@ def valida(num)
 		puts "Você acertou!" 
 	else 
 		puts "ERROU!"
+		
+		if ($numero_secreto > $chute.to_i) 
+			puts "O Número secreto é maior!"
+		else 
+			puts "O Número secreto é menor!"
+		end
+
 		if (num < 3 )
 			tentativas num+1
 		end
@@ -44,3 +51,25 @@ def valida(num)
 end
 
 tentativas 1
+
+# ou com for
+# limite_de_tentativas = 3
+# for tentativas in 1..limite_de_tentativas
+# 	puts "Tentativa " + tentativas.to_s + " de " + limite_de_tentativas.to_s
+# 	puts "Entre com o número"
+# 	$chute = gets
+# 	puts "Será que você acertou? Você chutou #{$hute}"
+# 
+# 	if ($numero_secreto == $chute.to_i) 
+#		puts "Você acertou!" 
+# 		break
+#	else 
+#		puts "ERROU!"
+#		
+#		if ($numero_secreto > $chute.to_i) 
+#			puts "O Número secreto é maior!"
+#		else 
+#			puts "O Número secreto é menor!"
+#		end
+# 	end
+# end
