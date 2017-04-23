@@ -28,7 +28,7 @@ class NegociacaoController {
 	
 	ou
 	
-	let data = new Date(
+	let data = new Date(...
 		this._inputData.value
 			.split('-')
 			.map(function(item, indice) {
