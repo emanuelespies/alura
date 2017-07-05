@@ -4,12 +4,12 @@ def da_boas_vindas
 	puts "Qual é o seu nome?"
 
 	# gets - pega a informação inserida pelo usuário
-	nome = gets
+	#.strip remove o enter na hora do gets
+	nome = gets.strip
 
 	puts "-------------- \n"
 
 	puts "Começaremos o jogo para você, #{nome}" 
-	# puts "Começaremos o jogo para você, " + nome
 end
 
 da_boas_vindas
@@ -29,10 +29,11 @@ def sorteia_numero
 	numero_secreto
 end
 
-def pede_numero tentativa, limite_de_tentativas
-	puts "Tentativa " + tentativa.to_s + " de " + limite_de_tentativas.to_s
+def pede_numero chutes, tentativa, limite_de_tentativas
+	puts "Tentativa #{tentativa} de #{limite_de_tentativas}"
+	puts "Chutes até agora: " + chutes.to_s 
 	puts "Entre com o número"
-	chute = gets
+	chute = gets.strip
 	puts "Será que você acertou? Você chutou #{chute}"
 	chute.to_i
 end
@@ -57,9 +58,14 @@ numero_secreto = sorteia_numero
 
 #pede pro usuário tentar acertar
 limite_de_tentativas = 3
+chutes = []
+
 for tentativas in 1..limite_de_tentativas
-	chute = pede_numero tentativas, limite_de_tentativas
+	chute = pede_numero chutes, tentativas, limite_de_tentativas
 	
+	# coloca um elemento dentro do array
+	chutes << chute
+
 	if verifica_acerto numero_secreto, chute
 		break
 	end
