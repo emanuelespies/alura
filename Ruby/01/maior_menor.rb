@@ -20,6 +20,7 @@ def sorteia_numero
 	# The Random class itself acts as a random generator
 	# http://stackoverflow.com/questions/198460/how-to-get-a-random-number-in-ruby
 	numero_secreto = Random.rand(0...200)
+	#numero_secreto = rand(200)
 
 	puts "Escolhido... que tal adivinhar hoje o nosso número secreto?"
 
@@ -55,6 +56,7 @@ def verifica_acerto numero_secreto, chute
 end
 
 numero_secreto = sorteia_numero
+pontos_ate_agora = 1000
 
 #pede pro usuário tentar acertar
 limite_de_tentativas = 3
@@ -62,6 +64,15 @@ chutes = []
 
 for tentativas in 1..limite_de_tentativas
 	chute = pede_numero chutes, tentativas, limite_de_tentativas
+
+	pontos_a_perder = (chute - numero_secreto).abs / 2.0
+
+	# if ao contrario
+	#unless pontos_a_perder > 0 
+	#	pontos_a_perder *= -1
+	#end
+
+	pontos_ate_agora -= pontos_a_perder
 	
 	# coloca um elemento dentro do array
 	chutes << chute
@@ -70,3 +81,5 @@ for tentativas in 1..limite_de_tentativas
 		break
 	end
 end
+
+puts "Você ganhou #{pontos_ate_agora} pontos."
