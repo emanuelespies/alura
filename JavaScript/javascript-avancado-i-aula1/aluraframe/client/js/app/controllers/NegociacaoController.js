@@ -11,46 +11,14 @@ class NegociacaoController {
 	adiciona(event) {
 		event.preventDefault();
 		
-		console.log(typeof(this._inputData.value));
-
-		//let data = new Date(this._inputData.value.split('-'));
-		//let data = new Date(this._inputData.value.replace(/-/g, ','));
-
-	/*
-	let dataS = this._inputData.value.split('-');
-	Number(dataS[0]);
-	Number(dataS[1]);
-	Number(dataS[2]);
-
-	dataS[1] -= 1;
-
-	let data = new Date(dataS[0], dataS[1], dataS[2]);
-	
-	ou
-	
-	let data = new Date(...
-		this._inputData.value
-			.split('-')
-			.map(function(item, indice) {
-				return item - indice % 2
-			}
-		})
-	);
-	*/
-
-		let data = new Date(
-			...this._inputData.value
-				.split('-')
-				.map((item, indice) => item - indice % 2)
-		);
-
 		let negociacao = new Negociacao(
-			data,
+			// helper
+			DateHelper.textoParaData(this._inputData.value),
 			this._inputQuantidade.value,
 			this._inputValor.value
 		);
-
-		console.log(negociacao);
+		// helper
+		let diaMesAno = DateHelper.dataParaTexto(negociacao.data);
 
 		// adicionar a negociacao em uma lista
 	}
