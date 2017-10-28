@@ -1,6 +1,7 @@
 class DateHelper {
 
 	constructor() {
+		// evitando que alguém instancie uma classe que só possui métodos estáticos
 		throw new Error('DateHelper não pode ser instanciada');
 	}
 	// static métodos que invoco direto na classe, 
